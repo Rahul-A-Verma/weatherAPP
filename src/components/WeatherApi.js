@@ -2,11 +2,22 @@ import { DateTime } from "luxon";
 const ApiKey = "3f910ddc26e4dfda231b37c004d8ff3d";
 const ApiUrl = "https://api.openweathermap.org/data/2.5/";
 
-const WeatherData = (infoType, searchParam) => {
+// const WeatherData = (infoType, searchParam) => {
+//   const url = new URL(ApiUrl + infoType);
+//   url.search = new URLSearchParams({ ...searchParam, appid: ApiKey });
+
+//   return fetch(url).then((res) => res.json());
+// };
+const WeatherData = async (infoType, searchParam) => {
   const url = new URL(ApiUrl + infoType);
   url.search = new URLSearchParams({ ...searchParam, appid: ApiKey });
 
-  return fetch(url).then((res) => res.json());
+  const response = await fetch(url);
+  if (!response.ok) {
+    // This is the professional way to handle a 404 or 401
+    throw new Error(`System Error: ${response.statusText}`);
+  }
+  return response.json();
 };
 
 // const iconUrl = (icon) => `http://openweathermap.org/img.wn/${icon}@2x.png`;
