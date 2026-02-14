@@ -93,7 +93,7 @@ const Search = ({ setQuery, setUnits, theme }) => {
             className={`flex items-center gap-2 px-6 py-3 rounded-full text-white font-black text-[10px] tracking-widest uppercase shadow-xl transition-all active:scale-90 bg-gradient-to-br ${btnGradient}`}
           >
             <CiSearch size={18} strokeWidth={1} />
-            <span className="hidden md:inline">INITIATE</span>
+            <span className="hidden md:inline">SEARCH</span>
           </button>
         </div>
       </div>
